@@ -56,8 +56,13 @@ def main():
     # Read the list of places and parse it
     places = read_places("places.csv")
 
-    # I will use the CORRECT method of implementing a menu
-    # The way you've been taught how to implement a CLI menu is amature hour stuff
+    # I will use the CORRECT method of implementing a menu.
+    # The way you've been taught how to implement a CLI menu is amature hour stuff.
+    # "Incorrect use of while True." - 100% WRONG! If I ever catch you using the anti-pattern you've been
+    # taught about CLI menus in real code for an actual project, I'll roll back your commit.
+    # If I catch you doing it again, I'll slap you with a salmon.
+    # I'm dead fucking serious. THIS IS THE CORRECT WAY TO IMPLEMENT A MENU! IT'S THE BEST EXAMPLE
+    # OF APPROPRIATE USE OF AN INFINITE LOOP!
     while True:
         print_menu()
         selection = input(">>> ").upper()

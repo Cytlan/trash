@@ -20,16 +20,17 @@ def read_places(filename):
     places = []
     with open(filename, newline='') as csvfile:
         placesReader = csv.reader(csvfile)
+        index = 1
         for row in placesReader:
-            places.append(row)
+            places.append({'index': index, 'name': row[0], 'country': row[1], 'priority': row[2], 'visited': row[3]})
+            index += 1
     return places
 
 # Print the list of places to the console
 def print_places(places):
     for i, place in enumerate(places):
-        index = i + 1
-        visited = "*" if place[3] == "v" else " "
-        print("{0}{1}. {2:20} in {3:20} {4:3}".format(visited, index, place[0], place[1], place[2]))
+        visited = "*" if place['visited'] == "v" else " "
+        print("{0}{1}. {2:20} in {3:20} {4:3}".format(visited, place['index'], place['name'], place['country'], place['priority']))
 
 # Main entry point
 def main():

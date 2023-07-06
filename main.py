@@ -29,9 +29,15 @@ def read_places(filename):
 
 # Print the list of places to the console
 def print_places(places):
-    for i, place in enumerate(places):
-        visited = "*" if place['visited'] == "v" else " "
+    unvisited_count = 0
+    for place in places:
+        visited = " "
+        if place['visited'] == "v":
+            visited = "*"
+        else:
+            unvisited_count += 1
         print("{0}{1}. {2:20} in {3:20} {4:3}".format(visited, place['index'], place['name'], place['country'], place['priority']))
+    print("{0} places. You still want to visit {1} places.".format(len(places), unvisited_count))
 
 # Print a random place that hasn't been visited
 def recomment_place(places):

@@ -4,6 +4,7 @@ Name: Dick Tracy
 Date started: Yesterday
 Github URL: No
 """
+import random # For picking a place to visit
 import csv # "you're not expected to use the csv module, but you're welcome to" - Don't mind if I do!
 
 # Print the main menu to the console
@@ -32,6 +33,16 @@ def print_places(places):
         visited = "*" if place['visited'] == "v" else " "
         print("{0}{1}. {2:20} in {3:20} {4:3}".format(visited, place['index'], place['name'], place['country'], place['priority']))
 
+# Print a random place that hasn't been visited
+def recomment_place(places):
+    unvisited = [place for place in places if place['visited'] == "n"]
+    if(len(unvisited) == 0):
+        print("No places left to visit!")
+        return
+    print("Not sure where to visit next?")
+    pick = random.choice(unvisited)
+    print("How about... {0} in {1}?".format(pick['name'], pick['country']))
+
 # Main entry point
 def main():
     print("Travel Tracker 1.0 - by Go Away")
@@ -47,7 +58,7 @@ def main():
         if selection == "L":
             print_places(places)
         elif selection == "R":
-            pass
+            recomment_place(places)
         elif selection == "A":
             pass
         elif selection == "M":
